@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react'
-// For Snackbar
 import { useRef } from 'react';
 import SnackbarAlert from '../../components/Snackbar';
-// Customized Methods
 import { sendData, getData } from '../../config/firebasemethods';
-// Mui Components
 import { Box, Container, FormControlLabel, Grid, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-// Customized Mui Components
 import Dropdown from "../../components/Dropdown";
 import Input from "../../components/Input";
 import Btn from "../../components/Button";
@@ -15,7 +11,6 @@ import DataTable from '../../components/datatable/DataTable';
 
 export default function QuizForm() {
 
-  // For Snackbar
   const [snackBarMsg, setSnackBarMsg] = useState({});
   const snackbarRef = useRef(null);
 
@@ -26,26 +21,11 @@ export default function QuizForm() {
   const [optionsArr, setOptionsArr] = useState([]);
   const [object, setObject] = useState({});
 
-  // let arr = [
-  //   {
-  //     id: 1,
-  //     display: "abc",
-  //   },
-  //   {
-  //     id: 2,
-  //     display: "abc",
-  //   },
-  //   {
-  //     id: 3,
-  //     display: "abc",
-  //   },
-  // ];
 
   let createQuiz = (e) => {
-    e.preventDefault(); // Prevent page refresh on submit
+    e.preventDefault();
     setIsCreateQuiz(true);
-    // object.questions = [];
-
+   
   };
 
   let fillObject = (key, val) => {
@@ -79,11 +59,10 @@ export default function QuizForm() {
   };
 
   let submitQuiz = (e) => {
-    e.preventDefault(); // Prevent page refresh on submit
+    e.preventDefault();  
     setIsCreateQuiz(false);
     console.log("Quiz Submitted");
 
-    // Saving some required entities inside the object
     object.questions = [...questionsArr];
     console.log(object);
 
@@ -91,7 +70,7 @@ export default function QuizForm() {
     sendData(`Quizzes/`, object)
       .then((res) => {
         // console.log(res);
-        { snackbarRef.current.handleClick() }   // Snackbar function reference
+        { snackbarRef.current.handleClick() }  
         setSnackBarMsg({
           type: "success",
           message: "Form Submitted Successfully.",
@@ -104,11 +83,11 @@ export default function QuizForm() {
           totalMarks: "",
           questions: [],
         })
-        // setAsstTrainersArr([]);
+        
 
       }).catch((err) => {
         console.log(err);
-        { snackbarRef.current.handleClick() }   // Snackbar function reference
+        { snackbarRef.current.handleClick() }   
         setSnackBarMsg({
           type: "error",
           message: "Something went wrong. Please try again.",
@@ -136,7 +115,7 @@ export default function QuizForm() {
     { field: 'quizDuration', headerName: 'Quiz Duration', width: 130 },
     { field: 'course', headerName: 'Course', width: 150 },
     { field: 'totalMarks', headerName: 'Total Marks', width: 110 },
-    // { field: 'questions', headerName: 'Questions', width: 115 },
+   
   ];
 
 
@@ -255,11 +234,11 @@ export default function QuizForm() {
         )}
 
 
-        {quizzes && quizzes.length > 0 
+        {quizzes && quizzes.length > 0
           ? <Box>
-          <Typography variant='h4'>All Quizzes:</Typography>
-          <DataTable rows={quizzes} columns={columns} />
-        </Box> : null}
+            <Typography variant='h4'>All Quizzes:</Typography>
+            <DataTable rows={quizzes} columns={columns} />
+          </Box> : null}
       </Box>
     </>
   );

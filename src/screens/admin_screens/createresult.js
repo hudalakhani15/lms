@@ -5,7 +5,7 @@ import Btn from "../../components/Button";
 import Dropdown from "../../components/Dropdown";
 import MuiSwitch from "../../components/Switch";
 import { sendData, getData } from "../../config/firebasemethods";
-// import { Container } from '@mui/system';
+
 
 export default function CreateResult() {
 
@@ -15,7 +15,7 @@ export default function CreateResult() {
     {
       name: "ABC",
       marks: 80,
-      rollNum: "ABC100",
+      rollNum: "ABC100",   
       result: "Pass",
     },
     {
@@ -121,7 +121,7 @@ export default function CreateResult() {
                     id: "wm",
                     fullName: "Web and Mobile",
                   },
-                
+
                   {
                     id: "gd",
                     fullName: "Graphic Designing",

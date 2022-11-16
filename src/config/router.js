@@ -9,6 +9,7 @@ import Result from "../screens/result";
 import NotFound from "../screens/notfound";
 import Login from "../screens/login";
 import SignUp from "../screens/signup";
+import StudentProfile from "../screens/profile";
 
 export default function AppRouter() {
     return (
@@ -18,6 +19,7 @@ export default function AppRouter() {
                     <Route path="/" element={<Home />} />
                     <Route path="admin/*" element={<Admin />} />
                     <Route path="stdform" element={<StdForm />} />
+                    <Route path="studentProfile" element={<StudentProfile />} />
                     <Route path="result" element={<Result />} />
                     <Route path="*" element={<NotFound />} />
                  <Route path="result" element={<Result />} />

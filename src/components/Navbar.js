@@ -18,6 +18,7 @@ const screens = [
   { name: 'Students Form', to: '/stdForm' },
   // { name: 'Users', to: '/users' },
   { name: 'Result', to: '/result' },
+  { name: 'Profile', to: 'studentProfile' },
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -59,11 +60,12 @@ function Navbar() {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily:"inherit",
-              fontWeight: 700,
+              fontFamily:'initial',
+              fontWeight: 500,
               letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
+              font:"50",
             }}
           >
             Learning Management System
@@ -106,7 +108,7 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
           <Typography
             variant="h5"
             noWrap

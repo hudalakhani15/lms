@@ -17,37 +17,37 @@ import MuiDatePicker from "../components/DatePicker";
 
 
 export default function StdForm() {
-    // For Snackbar
+    
     const [snackBarMsg, setSnackBarMsg] = useState({});
     const snackbarRef = useRef(null);
 
-    // This object will contain submitted form data
+  
     const [object, setObject] = useState({});
     const [stdData, setStdData] = useState({});
 
-    // For displaying date in Datepicker field on screen
+   
     const [dateOfBirth, setDateOfBirth] = useState(new Date('01/01/2000'));
-    const [rollNo, setRollNo] = useState(1001); // For Roll No
+    const [rollNo, setRollNo] = useState(1001);
 
     const handleDateChange = (date) => {
-        const dateToStr = setDate(date);  // setDate (custom method) will convert selected date to string
+        const dateToStr = setDate(date);  
         setDateOfBirth(dateToStr)
         fillObject('dateOfBirth', dateToStr)
     }
 
-    // Saving form data in object
+    
     const fillObject = (key, val) => {
         object[key] = val;
         setObject({ ...object });
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // Prevent page refresh on submit
+        e.preventDefault(); 
 
-        // Saving some required entities inside the object
+       
         object.rollNo = rollNo;
         object.age = "";
-        object.registrationDate = setDate(new Date());  // setDate (custom method) will convert date to string
+        object.registrationDate = setDate(new Date());  
         object.isFeeSubmitted = false;
         object.isApproved = false;
         object.isActive = false;
@@ -56,7 +56,7 @@ export default function StdForm() {
         sendData(`Student Data/`, object)
             .then((res) => {
                 // console.log(res);
-                { snackbarRef.current.handleClick() }   // Snackbar function reference
+                { snackbarRef.current.handleClick() }  
                 setSnackBarMsg({
                     type: "success",
                     message: "Registered Successfully.",
@@ -85,7 +85,7 @@ export default function StdForm() {
                 setRollNo(rollNo + 1);
             }).catch((err) => {
                 console.log(err);
-                { snackbarRef.current.handleClick() }   // Snackbar function reference
+                { snackbarRef.current.handleClick() }   
                 setSnackBarMsg({
                     type: "error",
                     message: "Something went wrong. Please try again.",
@@ -98,7 +98,7 @@ export default function StdForm() {
         <>
             <Navbar />
             <section>
-                <form action="" onSubmit={handleSubmit}
+                <form  onSubmit={handleSubmit}
                 >
                     <Grid container className="formContainer" >
 
@@ -132,13 +132,14 @@ export default function StdForm() {
                                         id: "wm",
                                         fullName: "Web and Mobile",
                                     },
-                                    {
-                                        id: "ds",
-                                        fullName: "Data Science",
-                                    },
+
                                     {
                                         id: "gd",
                                         fullName: "Graphic Designing",
+                                    },
+                                    {
+                                        id: "ve",
+                                        fullName: "Video Editing",
                                     }
                                 ]}
                             />
@@ -160,28 +161,21 @@ export default function StdForm() {
                                         id: "b",
                                         fullName: "B",
                                     },
-                                    {
-                                        id: "c",
-                                        fullName: "C",
-                                    },
-                                    {
-                                        id: "d",
-                                        fullName: "D",
-                                    },
+
                                 ]}
                             />
                         </Grid>
 
                         <Grid item xs={9} sm={5} m={1} my={2}>
                             <Input label="Contact" value={object.contact}
-                                type="number" name="contact" required={true}
+                                name="contact" required={true}
                                 onChange={(e) => fillObject('contact', e.target.value)}
                             />
                         </Grid>
 
                         <Grid item xs={9} sm={5} m={1} my={2}>
                             <Input label="CNIC" value={object.cnic}
-                                type="number" name="cnic" required={true}
+                                name="cnic" required={true}
                                 onChange={(e) => fillObject('cnic', e.target.value)}
                             />
                         </Grid>
@@ -195,21 +189,21 @@ export default function StdForm() {
 
                         <Grid item xs={9} sm={5} m={1} my={2}>
                             <Input label="Father CNIC" value={object.fatherCnic}
-                                type="number" name="fatherCnic" // required={true}
+                                name="fatherCnic" // required={true}
                                 onChange={(e) => fillObject('fatherCnic', e.target.value)}
                             />
                         </Grid>
 
                         <Grid item xs={9} sm={5} m={1} my={2}>
                             <Input label="Father Contact" value={object.fatherContact}
-                                type="number" name="fatherContact" required={true}
+                                name="fatherContact" required={true}
                                 onChange={(e) => fillObject('fatherContact', e.target.value)}
                             />
                         </Grid>
 
                         <Grid item xs={9} sm={5} m={1} my={2}>
                             <Input label="Emergency Contact" value={object.emergencyContact}
-                                type="number" name="emergencyContact" required={true}
+                                name="emergencyContact" required={true}
                                 onChange={(e) => fillObject('emergencyContact', e.target.value)}
                             />
                         </Grid>
@@ -237,14 +231,8 @@ export default function StdForm() {
                     </Grid>
                 </form>
 
-                {/* {stdData && Object.keys(stdData).length > 0
-                    ?
-                    <>
-                    <Typography variant="p">{stdData.firstName}</Typography>
-                    <Typography variant="p">{stdData.lastName}</Typography>
-                    </>
-                    : null} */}
-                    
+                
+
             </section>
         </>
     )
