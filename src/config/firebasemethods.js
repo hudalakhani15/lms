@@ -104,29 +104,57 @@ let sendData = (nodeNames, obj, id) => {
   });
 };
 
-let getData = (nodeNames, id) => {
-  let reference = ref(database, `${nodeNames}/${id ? id : ''}`)
 
+let getData = (node, userId) => {
+  let dbReference = ref(database, `${node}/${userId ? userId : ""}`);
   return new Promise((resolve, reject) => {
-    onValue(reference, (snapshot) => {
-      if(snapshot.exists()) {
-        let data = snapshot.val();
-        if(id) {
-          resolve(data);
-        } 
-        else {
-          let arr = Object.values(data);
-          resolve(arr);
+    onValue(
+      dbReference,
+      (data) => {
+        if (data.exists()) {
+          let userData = data.val();
+          if (userId) {
+            resolve(userData);
+          } else {
+            let dataArr = Object.values(userData);
+            resolve(dataArr);
+          }
+        } else {
+          reject("Data not found");
         }
-      } else {
-        reject("Data Not Found");
+      },
+      {
+        onlyOnce: false,
       }
-
-    }, {
-      onlyOnce: false
-    });
-
-  })
+    );
+  });
 };
 
-export { signUpUser, loginUser, userSignOut, checkUser, sendData, getData };
+let deleteData = (node, listId) => {
+  if (!listId) {
+    let dbReference = ref(database, `${node}`);
+    return new Promise((resolve, reject) => {
+      set(dbReference, null)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  } else {
+    let dbReference = ref(database, `${node}/${listId}`);
+    return new Promise((resolve, reject) => {
+      set(dbReference, null)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+};
+
+
+export { signUpUser, loginUser, userSignOut, checkUser, sendData, getData , deleteData };

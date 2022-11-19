@@ -1,15 +1,14 @@
 import React from 'react';
 import Drawer from '../components/Drawer';
 import GroupsIcon from '@mui/icons-material/Groups';
-import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
 import QuizIcon from '@mui/icons-material/Quiz';
 import SchoolIcon from '@mui/icons-material/School';
 import { Box } from '@mui/system';
 import { Route, Routes } from 'react-router-dom';
-import RegdStudents from './admin_screens/regdstudents';
-import Courseform from '../screens/admin_screens/courseform';
-import QuizForm from './admin_screens/quizform';
-import CreateResult from '../screens/admin_screens/createresult';
+
+import Message from './admin_screens/Message';
+import Notifications from './admin_screens/notifications';
+import Feedback from './admin_screens/Feedback';
 
 
 export default function Admin() {
@@ -19,34 +18,28 @@ export default function Admin() {
             <Box>
                 <Drawer dataSource={[
                     {
-                        name: 'Students',
+                        name: 'Message',
                         icon: <GroupsIcon />,
-                        to: '/admin/regdstudents',
+                        to: '/admin/message',
                     },
                     {
-                        name: 'Courses',
-                        icon: <AutoAwesomeMotionIcon />,
-                        to: '/admin/courseform',
-                    },
-                    {
-                        name: 'Quizzes',
+                        name: 'Notifications',
                         icon: <QuizIcon />,
-                        to: '/admin/quizform',
+                        to: '/admin/notifications',
                     },
                     {
-                        name: 'Results',
+                        name: 'Feedback',
                         icon: <SchoolIcon />,
-                        to: '/admin/createresult',
+                        to: '/admin/feedback',
                     },
                 ]}
 
                     // All Nested Routes
                     nestedRoutes={
                         <Routes>
-                            <Route path="regdstudents" element={<RegdStudents />} />
-                            <Route path="courseform" element={<Courseform />} />
-                            <Route path="quizform" element={<QuizForm />} />
-                            <Route path="createresult" element={<CreateResult />} />
+                            <Route path="message" element={<Message />} /> 
+                            <Route path="notifications" element={<Notifications/>} />
+                            <Route path="feedback" element={<Feedback />} />
                         </Routes>
                     }
                 />

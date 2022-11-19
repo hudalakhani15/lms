@@ -13,8 +13,8 @@ const firebaseConfig = {
   projectId: "hackathon-b4a16",
   storageBucket: "hackathon-b4a16.appspot.com",
   messagingSenderId: "589683208959",
-  appId: "1:589683208959:web:ec82312dba8cd27eb792ca",
-  measurementId: "G-8410JZDH95"
+  appId: "1:589683208959:web:d6f7ee36f0e072a9b792ca",
+  measurementId: "G-NW1GSP8E3P"
 };
 
 // Initialize Firebase

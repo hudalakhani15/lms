@@ -58,13 +58,44 @@ let login = () => {
           />
           <Btn onClick={login}
            variant="contained"
-           btnVal="Login"/>
-           
-           
-        
-            
+           btnVal="Login"> 
+          
+            </Btn>
         </Box>
       </Box>
     </div>
   );
 }
+// import { useState } from "react";
+// import { useDispatch } from "react-redux";
+// import { useNavigate } from "react-router-dom";
+// import { edit } from "./redux/loginReducer";
+
+// function Login() {
+//   const [model, setModel] = useState([]);
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
+
+//   let login = () => {
+//     console.log(model);
+
+//     dispatch(edit(model));
+//     navigate("/");
+//   };
+//   return (
+//     <>
+//       <h1>Login</h1>
+//       <input
+//         placeholder="Email"
+//         onChange={(e) => setModel({ ...model, email: e.target.value })}
+//       />
+//       <input
+//         placeholder="Password"
+//         onChange={(e) => setModel({ ...model, password: e.target.value })}
+//       />
+//       <button onClick={login}>Login</button>
+//     </>
+//   );
+// }
+
+// export default Login;

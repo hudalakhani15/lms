@@ -8,19 +8,4 @@ import DataTable from "../components/datatable/DataTable";
 
 export default function Users() {
 
-    // const auth = getAuth(app);
-    // signOut(auth).then(() => {
-    //   // Sign-out successful.
-    // }).catch((error) => {
-    //   // An error happened.
-    // });
-    
-
-    return (
-        <>
-        <Navbar />
-        <h1>Result</h1>
-        {/* <DataTable /> */}
-        </>
-    )
 }
